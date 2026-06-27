@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Jogador {
     private int vida = 5;
-    private int percepção;
+    private int percepcao;
     int posicaoX;
     int posicaoY;
 
