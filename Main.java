@@ -14,14 +14,16 @@ public class Main {
 
         for(int i = 0; i < tamanhoTabuleiro; i++){
             for(int j = 0; j < tamanhoTabuleiro; j++) {
-                isWall = random.nextInt(0, 100);
-                if(isWall < 80) {
+                isWall = random.nextInt(0, 101);
+                if(isWall <= 80) {
                     tabuleiro[i][j] = '.';
                 } else {
                     tabuleiro[i][j] = '█';
                 }
             }
         }
+
+        Jogador jogador = new Jogador(tabuleiro);
 
         Dinossauros[] d1 = new Dinossauros[10];
 
@@ -36,26 +38,26 @@ public class Main {
         d1[8] = new Troodonte(tabuleiro, tamanhoTabuleiro);
         d1[9] = new Tiranossauro(tabuleiro, tamanhoTabuleiro);
 
-        for(int i = 0; i < tamanhoTabuleiro; i++){
-            for(int j = 0; j < tamanhoTabuleiro; j++){
-                System.out.print(tabuleiro[i][j] + " ");
-            }
-            System.out.println();
-        }
 
-        System.out.println();
-        System.out.println();
 
-        for(int n = 0; n < 2; n++) {
-            for (int i = 0; i < 9; i++) {
-                d1[i].move(tabuleiro, tamanhoTabuleiro);
-            }
+        int isInGame;
 
+        while(true) {
             for (int i = 0; i < tamanhoTabuleiro; i++) {
                 for (int j = 0; j < tamanhoTabuleiro; j++) {
                     System.out.print(tabuleiro[i][j] + " ");
                 }
                 System.out.println();
+            }
+
+            isInGame = jogador.move(tabuleiro, tamanhoTabuleiro);
+
+            if(isInGame == 5){
+                break;
+            }
+
+            for (int i = 0; i < 9; i++) {
+                d1[i].move(tabuleiro, tamanhoTabuleiro);
             }
 
             System.out.println();
