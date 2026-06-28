@@ -30,4 +30,8 @@ public abstract class Entity {
     }
 
     public abstract char render();
+
+    public int getHealth() {
+        return health;
+    }
 }

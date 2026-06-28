@@ -25,8 +25,14 @@ public class Main {
         while(true) {
             map.renderMap();
             char input = '-';
+
+            System.out.println("--------------");
+            System.out.println("Saúde: " + player.getHealth());
+            System.out.println(player.renderInventory());
+            System.out.println("--------------");
             System.out.println("User WASD para se mover (digite apenas um caracter por vez em minusculo)");
-            System.out.println("(0) Sair do jogo");
+            System.out.println("(1) (0) Sair do jogo");
+            System.out.println("--------------");
 
             do {
                 if (input!= '-')
@@ -39,21 +45,13 @@ public class Main {
             }
 
             if ("wasd".indexOf(input) >= 0){
-                int dir = 0;
-                switch (input ){
-                    case 'w':
-                        dir = 3;
-                        break;
-                    case 'a':
-                        dir = 0;
-                        break;
-                    case 's':
-                        dir = 2;
-                        break;
-                    case 'd':
-                        dir = 1;
-                        break;
-                }
+                int dir = switch (input) {
+                    case 'w' -> 3;
+                    case 'a' -> 0;
+                    case 's' -> 2;
+                    case 'd' -> 1;
+                    default -> 0;
+                };
 
                 player.setDirection(dir);
                 player.move();
