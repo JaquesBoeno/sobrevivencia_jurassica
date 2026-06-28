@@ -35,7 +35,7 @@ public class Cell {
         String r = "";
         if (isWall) r += '#';
         if (this.entity!= null) r += entity.render();
-        if (this.box != null) r += 'X';
+        if (this.box != null) r += box.render();
         if (r.isEmpty()) r += ".";
         return r;
     }

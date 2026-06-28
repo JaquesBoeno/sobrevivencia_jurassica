@@ -24,26 +24,38 @@ public class Main {
 
         while(true) {
             map.renderMap();
-            int input = 0;
-            System.out.println("Escolha para onde se mover: ");
-            System.out.println("1- Cima");
-            System.out.println("2- Baixo");
-            System.out.println("3- Esquerda");
-            System.out.println("4- Direita");
-            System.out.println("5- Sair do jogo");
+            char input = '-';
+            System.out.println("User WASD para se mover (digite apenas um caracter por vez em minusculo)");
+            System.out.println("(0) Sair do jogo");
 
             do {
-                if (!(input >= 0 && input < 5))
+                if (input!= '-')
                     System.out.println("Opção invalida, digite novamente.");
-                input = scanner.nextInt();
-            }while(!(input >= 0 && input < 5)); // intervalo de inputs valido
+                input = scanner.next().charAt(0);
+            }while("wasd0".indexOf(input) < 0); // intervalo de inputs valido
 
-            if(input == 0){
+            if(input == '0'){
                 break;
             }
 
-            if (input >= 1 && input <=4){
-                player.setDirection(input - 1);
+            if ("wasd".indexOf(input) >= 0){
+                int dir = 0;
+                switch (input ){
+                    case 'w':
+                        dir = 3;
+                        break;
+                    case 'a':
+                        dir = 0;
+                        break;
+                    case 's':
+                        dir = 2;
+                        break;
+                    case 'd':
+                        dir = 1;
+                        break;
+                }
+
+                player.setDirection(dir);
                 player.move();
             }
 

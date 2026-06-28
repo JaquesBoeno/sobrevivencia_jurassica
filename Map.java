@@ -58,7 +58,7 @@ public class Map {
     public void renderMap(){
         for (int i = 0; i < this.size; i += 1) {
             for (int j = 0; j < this.size; j += 1) {
-                System.out.print(map[i][j].render() + " ");
+                System.out.print(map[j][this.size - i -1].render() + " ");
             }
 
             System.out.println();
