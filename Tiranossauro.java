@@ -1,22 +1,24 @@
 package TrabalhoPOO;
 
-public class Tiranossauro extends Dinossauros{
-    private int vida;
-    private int dano;
-    int posicaoX;
-    int posicaoY;
+public class Tiranossauro extends Dinosaur{
 
-    public Tiranossauro(char[][] tabuleiro, int tamanhoTabuleiro){
-        posicaoX = tamanhoTabuleiro - 1;
-        posicaoY = tamanhoTabuleiro - 1;
-        tabuleiro[posicaoX][posicaoY] = 'R';
+    public Tiranossauro(Map map) {
+        this.map = map;
+        Cell p = new Cell();
+        p.setEntity(this);
+        this.position = new Cord(map.getSize()-1, map.getSize()-1);
+        map.setCellAt(this.position.getPosX(), this.position.getPosY(), p);
+    }
+
+    public void move(){
+
     }
 
     protected int ataca(){
         return super.ataca();
     }
 
-    protected void move(char[][] tabuleiro, int tamanhoTabuleiro){
-        return;
+    public char render(){
+        return 'R';
     }
 }

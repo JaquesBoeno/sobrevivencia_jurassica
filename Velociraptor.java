@@ -2,45 +2,34 @@ package TrabalhoPOO;
 
 import java.util.Random;
 
-public class Velociraptor extends Dinossauros{
-    private int vida;
-    private int dano;
-    int posicaoX;
-    int posicaoY;
-
-    public Velociraptor(char[][] tabuleiro, int tamanhoTabuleiro){
+public class Velociraptor extends Dinosaur{
+    public Velociraptor(Map map){
         Random random = new Random();
+        this.map = map;
+
+        int x = 0;
+        int y = 0;
+
         do {
-            posicaoX = random.nextInt(0, tamanhoTabuleiro);
-            posicaoY = random.nextInt(0, tamanhoTabuleiro);
-        } while (tabuleiro[posicaoX][posicaoY] != '.' || (posicaoX == tamanhoTabuleiro - 1 && posicaoY == tamanhoTabuleiro - 1) || (posicaoX == 0 && posicaoY == 0));
-        tabuleiro[posicaoX][posicaoY] = 'V';
+            x = random.nextInt(0, map.getSize());
+            y = random.nextInt(0, map.getSize());
+        } while (!map.isValid(x, y) || (x == map.getSize() - 1 && y == map.getSize() - 1) || (x == 0 && y == 0));
+
+        Cell p = new Cell();
+        p.setEntity(this);
+        this.position = new Cord(x, y);
+        map.setCellAt(this.position.getPosX(), this.position.getPosY(), p);
+    }
+
+    public void move(){
+        super.move();
     }
 
     protected int ataca() {
         return super.ataca();
     }
 
-    protected void move(char[][] tabuleiro, int tamanhoTabuleiro){
-        int direcao;
-        Random random = new Random();
-
-        for(int i = 0; i < 2; i++) {
-            direcao = random.nextInt(0, 4);
-
-            tabuleiro[posicaoX][posicaoY] = '.';
-
-            if (direcao == 0 && posicaoX - 1 >= 0 && tabuleiro[posicaoX - 1][posicaoY] == '.') {
-                posicaoX--;
-            } else if (direcao == 1 && posicaoX + 1 < tamanhoTabuleiro && tabuleiro[posicaoX + 1][posicaoY] == '.') {
-                posicaoX++;
-            } else if (direcao == 2 && posicaoY - 1 >= 0 && tabuleiro[posicaoX][posicaoY - 1] == '.') {
-                posicaoY--;
-            } else if (direcao == 3 && posicaoY + 1 < tamanhoTabuleiro && tabuleiro[posicaoX][posicaoY + 1] == '.') {
-                posicaoY++;
-            }
-
-            tabuleiro[posicaoX][posicaoY] = 'V';
-        }
+    public char render(){
+        return 'V';
     }
 }
