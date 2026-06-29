@@ -9,10 +9,12 @@ public abstract class Entity {
 
     public void move(){
         this.nextPos = calcNewPos(this.direction);
-
-        if (map.isValid(nextPos.getPosX(), nextPos.getPosY())) {
-            map.moveEntity(this.position, nextPos);
-            this.position = nextPos;
+        Cell dest = map.getCellAt(nextPos.getPosX(), nextPos.getPosY());
+        if (!dest.isWall()) {
+            if (!dest.hasEntity()) {
+                map.moveEntity(this.position, nextPos);
+                this.position = nextPos;
+            }
         }
     };
 

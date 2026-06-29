@@ -32,6 +32,12 @@ public class Cell {
     public boolean isEmpty(){
         return !isWall && entity == null;
     }
+    public boolean isWall() {
+        return this.isWall;
+    }
+    public boolean hasEntity(){
+        return this.entity == null;
+    }
 
     public String render(){
         String r = "";
