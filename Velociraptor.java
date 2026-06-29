@@ -23,6 +23,7 @@ public class Velociraptor extends Dinosaur{
 
     public void move(){
         super.move();
+        super.move();
     }
 
     protected int ataca() {

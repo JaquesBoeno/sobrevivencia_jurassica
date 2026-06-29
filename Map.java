@@ -17,8 +17,8 @@ public class Map {
 
         for (int i = 0; i < this.size; i += 1){
             for (int j = 0; j < this.size; j += 1){
-                int p = random.nextInt(0, 101);
-                if (p <= 20){
+                int p = random.nextInt(0, 100);
+                if (p < 20){
                     map[i][j] = new Cell(true);
                 } else {
                     map[i][j] = new Cell();

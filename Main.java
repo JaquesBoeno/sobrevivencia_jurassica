@@ -19,6 +19,13 @@ public class Main {
         dinos[7] = new Troodonte(map);
         dinos[8] = new Troodonte(map);
         dinos[9] = new Tiranossauro(map);
+        Box b1 = new Box(map, dinos);
+        Box b2 = new Box(map, dinos);
+        Box b3 = new Box(map, dinos);
+        Box b4 = new Box(map, dinos);
+        Box b5 = new Box(map, dinos);
+
+        System.out.println(b1.getType() + " " + b2.getType() + " " + b3.getType() + " " + b4.getType() + " " + b5.getType());
 
         Player player = new Player(map);
 
@@ -31,20 +38,20 @@ public class Main {
             System.out.println(player.renderInventory());
             System.out.println("--------------");
             System.out.println("User WASD para se mover (digite apenas um caracter por vez em minusculo)");
-            System.out.println("(1) (0) Sair do jogo");
+            System.out.println("(0) Sair do jogo");
             System.out.println("--------------");
 
             do {
-                if (input!= '-')
+                if (input != '-')
                     System.out.println("Opção invalida, digite novamente.");
                 input = scanner.next().charAt(0);
-            }while("wasd0".indexOf(input) < 0); // intervalo de inputs valido
+            } while ("wasd0".indexOf(input) < 0); // intervalo de inputs valido
 
-            if(input == '0'){
+            if (input == '0') {
                 break;
             }
 
-            if ("wasd".indexOf(input) >= 0){
+            if ("wasd".indexOf(input) >= 0) {
                 int dir = switch (input) {
                     case 'w' -> 3;
                     case 'a' -> 0;
@@ -64,5 +71,7 @@ public class Main {
             System.out.println();
             System.out.println();
         }
+
+        scanner.close();
     }
 }

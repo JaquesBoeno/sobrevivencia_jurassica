@@ -27,6 +27,8 @@ public class Cell {
         this.box = box;
     }
 
+    public Box getBox(){ return box; }
+
     public boolean isEmpty(){
         return !isWall && entity == null;
     }

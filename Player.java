@@ -20,4 +20,18 @@ public class Player extends Entity {
     public String renderInventory(){
         return this.inventory.renderInventory();
     }
+
+    public void move(){
+        super.move();
+
+        Box b = map.getCellAt(position.getPosX(), position.getPosY()).getBox();
+
+        if(b != null){
+            b.putItem(inventory);
+        }
+
+        Cell c = map.getCellAt(position.getPosX(), position.getPosY());
+        c.setBox(null);
+        map.setCellAt(position.getPosX(), position.getPosY(), c);
+    }
 }
