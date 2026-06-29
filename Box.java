@@ -32,8 +32,8 @@ public class Box {
         map.setCellAt(this.position.getPosX(), this.position.getPosY(), p);
     }
 
-    public char render(){
-        return 'X';
+    public String render(){
+        return TextColor.color("X", TextColor.Color.YELLOW);
     }
 
     public void putItem(Inventory i){

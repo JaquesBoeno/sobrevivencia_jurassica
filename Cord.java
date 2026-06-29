@@ -28,4 +28,11 @@ public class Cord {
     public void setPosY(int posY) {
         this.posY = posY;
     }
+
+    public int getSquareDistance(Cord b){
+        int dx = this.getPosX() - b.getPosX();
+        int dy = this.getPosY() - b.getPosY();
+
+        return  dx*dx + dy*dy;
+    }
 }

@@ -65,6 +65,25 @@ public class Map {
         }
     }
 
+    public void renderMap(Cord player_cord, int radius){
+        Cord current_cord = new Cord();
+        for (int i = 0; i < this.size; i += 1) {
+            for (int j = 0; j < this.size; j += 1) {
+                current_cord.setPosX(j);
+                current_cord.setPosY(this.size - i -1);
+                String str = "";
+                if (player_cord.getSquareDistance(current_cord) < radius*radius){
+                    str = map[current_cord.getPosX()][current_cord.getPosY()].render();
+                } else {
+                    str = TextColor.color("?", TextColor.Color.GRAY);;
+                }
+                System.out.print( str + " ");
+            }
+
+            System.out.println();
+        }
+    }
+
     public int getSize() {
         return this.size;
     }

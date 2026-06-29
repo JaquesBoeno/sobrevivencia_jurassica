@@ -30,7 +30,7 @@ public class Troodonte extends Dinosaur{
         return super.ataca();
     }
 
-    public char render(){
-        return 'T';
+    public String render(){
+        return TextColor.color("T", TextColor.Color.RED);
     }
 }

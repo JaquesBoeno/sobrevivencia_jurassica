@@ -14,8 +14,8 @@ public class Player extends Entity {
         this.inventory = new Inventory();
     }
 
-    public char render(){
-        return 'P';
+    public String render(){
+        return TextColor.color("P", TextColor.Color.BLUE);
     }
     public String renderInventory(){
         return this.inventory.renderInventory();
@@ -33,5 +33,8 @@ public class Player extends Entity {
         Cell c = map.getCellAt(position.getPosX(), position.getPosY());
         c.setBox(null);
         map.setCellAt(position.getPosX(), position.getPosY(), c);
+    }
+    public Cord getPos(){
+        return this.position;
     }
 }

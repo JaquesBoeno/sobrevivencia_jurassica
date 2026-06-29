@@ -38,7 +38,7 @@ public class Compsognato extends Dinosaur {
         return super.ataca();
     }
 
-    public char render(){
-        return 'C';
+    public String render(){
+        return TextColor.color("C", TextColor.Color.RED);
     }
 }

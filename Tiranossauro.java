@@ -18,7 +18,8 @@ public class Tiranossauro extends Dinosaur{
         return super.ataca();
     }
 
-    public char render(){
-        return 'R';
+    public String render(){
+        return TextColor.color("R", TextColor.Color.RED);
+
     }
 }

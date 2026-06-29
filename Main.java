@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int map_size = 11;
+        int map_size = 15;
         Scanner scanner = new Scanner(System.in);
         Map map = new Map(map_size);
         Dinosaur[] dinos = new Dinosaur[10];
@@ -30,7 +30,7 @@ public class Main {
         Player player = new Player(map);
 
         while(true) {
-            map.renderMap();
+            map.renderMap(player.getPos(), 3);
             char input = '-';
 
             System.out.println("--------------");

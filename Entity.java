@@ -29,7 +29,7 @@ public abstract class Entity {
         return new Cord( x, y);
     }
 
-    public abstract char render();
+    public abstract String render();
 
     public int getHealth() {
         return health;
