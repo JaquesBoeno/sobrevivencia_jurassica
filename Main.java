@@ -30,7 +30,7 @@ public class Main {
         Player player = new Player(map);
 
         while(true) {
-            map.renderMap(player.getPos(), 3);
+            map.renderMap(player.getPos(), 5);
             char input = '-';
 
             System.out.println("--------------");

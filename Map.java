@@ -72,7 +72,7 @@ public class Map {
                 current_cord.setPosX(j);
                 current_cord.setPosY(this.size - i -1);
                 String str = "";
-                if (player_cord.getSquareDistance(current_cord) < radius*radius){
+                if (player_cord.getSquareDistance(current_cord) <= radius*radius){
                     str = map[current_cord.getPosX()][current_cord.getPosY()].render();
                 } else {
                     str = TextColor.color("?", TextColor.Color.GRAY);;

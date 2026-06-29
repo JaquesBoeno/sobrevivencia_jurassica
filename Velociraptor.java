@@ -31,6 +31,6 @@ public class Velociraptor extends Dinosaur{
     }
 
     public String render(){
-        return TextColor.color("C", TextColor.Color.RED);
+        return TextColor.color("V", TextColor.Color.RED);
     }
 }
