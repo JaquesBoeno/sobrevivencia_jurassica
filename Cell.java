@@ -36,7 +36,7 @@ public class Cell {
         return this.isWall;
     }
     public boolean hasEntity(){
-        return this.entity == null;
+        return this.entity != null;
     }
 
     public String render(){

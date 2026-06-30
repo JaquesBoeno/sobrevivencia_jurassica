@@ -1,24 +1,25 @@
 package TrabalhoPOO;
 
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) {
         int map_size = 15;
         Scanner scanner = new Scanner(System.in);
         Map map = new Map(map_size);
-        Dinosaur[] dinos = new Dinosaur[10];
+        Vector<Dinosaur> dinos = new Vector<>();
 
-        dinos[0] = new Compsognato(map);
-        dinos[1] = new Compsognato(map);
-        dinos[2] = new Velociraptor(map);
-        dinos[3] = new Velociraptor(map);
-        dinos[4] = new Troodonte(map);
-        dinos[5] = new Troodonte(map);
-        dinos[6] = new Troodonte(map);
-        dinos[7] = new Troodonte(map);
-        dinos[8] = new Troodonte(map);
-        dinos[9] = new Tiranossauro(map);
+        dinos.add(new Compsognato(map, dinos));
+        dinos.add(new Compsognato(map, dinos));
+        dinos.add( new Velociraptor(map, dinos));
+        dinos.add( new Velociraptor(map, dinos));
+        dinos.add( new Troodonte(map, dinos));
+        dinos.add(new Troodonte(map, dinos));
+        dinos.add( new Troodonte(map, dinos));
+        dinos.add( new Troodonte(map, dinos));
+        dinos.add( new Troodonte(map, dinos));
+        dinos.add( new Tiranossauro(map, dinos));
         Box b1 = new Box(map, dinos);
         Box b2 = new Box(map, dinos);
         Box b3 = new Box(map, dinos);
@@ -30,7 +31,7 @@ public class Main {
         Player player = new Player(map);
 
         while(true) {
-            map.renderMap(player.getPos(), 5);
+            map.renderMap();
             char input = '-';
 
             System.out.println("--------------");
@@ -64,9 +65,11 @@ public class Main {
                 player.move();
             }
 
-            for (int i = 0; i < dinos.length; i++) {
-                dinos[i].move();
+            for (Dinosaur d: dinos) {
+                if (d.isAlive())
+                    d.move();
             }
+            dinos.removeIf(d -> !d.isAlive());
 
             System.out.println();
             System.out.println();

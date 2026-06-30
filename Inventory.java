@@ -18,4 +18,10 @@ public class Inventory {
         items[t]++;
         System.out.println(items[t]);
     }
+    public void takeItem(int index){
+        items[index]--;
+    }
+
+    public int[] getItems() { return items; }
+
 }

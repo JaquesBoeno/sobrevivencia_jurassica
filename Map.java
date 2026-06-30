@@ -27,13 +27,12 @@ public class Map {
         }
     }
 
-    public boolean isValid(int posX, int posY){
-        // fora dos limites do mapa
-        if (posX < 0 || posX >= this.size || posY < 0 || posY >= this.size)
-            return false;
+    public boolean isInsideMap(Cord c){
+        return c.getPosX() >= 0 && c.getPosX() < this.size && c.getPosY() >= 0 && c.getPosY() < this.size;
+    }
 
-        // contrario do se tem parede (se tem retorna falso, caso não tenha retorna true)
-        return (this.map[posX][posY].isEmpty());
+    public boolean isValid(Cord c){
+        return isInsideMap(c) && (this.map[c.getPosX()][c.getPosY()].isEmpty()) ;
     }
 
     public Cell getCellAt(int posX, int posY){

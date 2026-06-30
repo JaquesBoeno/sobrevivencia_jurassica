@@ -1,15 +1,16 @@
 package TrabalhoPOO;
 
 import java.util.Random;
+import java.util.Vector;
 
 public class Box {
     private int type;
     private static int[] available = new int[]{1, 2, 1, 1};
     private Cord position;
     private Map map;
-    private Dinosaur[] dinos;
+    private Vector<Dinosaur> dinos;
 
-    public Box(Map map, Dinosaur[] dinos) {
+    public Box(Map map, Vector<Dinosaur> dinos) {
         this.map = map;
         this.dinos = dinos;
         Random random = new Random();
@@ -18,17 +19,15 @@ public class Box {
         } while (available[type] == 0);
         available[type]--;
 
-        int x;
-        int y;
-
+        Cord c = new Cord(0, 0);
         do {
-            x = random.nextInt(0, 20);
-            y = random.nextInt(0, 20);
-        } while (!map.isValid(x, y) || (x == map.getSize() - 1 && y == map.getSize() - 1) || (x == 0 && y == 0));
+            c.setPosX(random.nextInt(0, 20));
+            c.setPosY(random.nextInt(0, 20));
+        } while (!map.isValid(c) || (c.getPosX() == map.getSize() - 1 && c.getPosY() == map.getSize() - 1) || (c.getPosX() == 0 && c.getPosY() == 0));
 
         Cell p = new Cell();
         p.setBox(this);
-        this.position = new Cord(x, y);
+        this.position = c;
         map.setCellAt(this.position.getPosX(), this.position.getPosY(), p);
     }
 
@@ -40,7 +39,7 @@ public class Box {
         if(type < 3) {
             i.receiveItem(type);
         } else{
-            dinos[dinos.length - 1] = new Compsognato(position.getPosX(), position.getPosY(), map);
+            dinos.add( new Compsognato(position.getPosX(), position.getPosY(), map, this.dinos));
         }
 
         Cell c = map.getCellAt(position.getPosX(), position.getPosY());
@@ -48,4 +47,7 @@ public class Box {
     }
 
     public int getType(){ return type; }
+    public boolean hasCompsognato(){
+        return type == 3;
+    }
 }
