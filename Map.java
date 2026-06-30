@@ -36,6 +36,10 @@ public class Map {
         return (this.map[posX][posY].isEmpty());
     }
 
+    public boolean isWall(int posX, int posY) {
+        return posX < 0 || posX >= this.size || posY < 0 || posY >= this.size || this.map[posX][posY].hasWall();
+    }
+
     public Cell getCellAt(int posX, int posY){
         return map[posX][posY];
     }

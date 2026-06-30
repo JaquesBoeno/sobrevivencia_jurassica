@@ -3,7 +3,7 @@ package TrabalhoPOO;
 import java.util.Random;
 
 public class Velociraptor extends Dinosaur{
-    public Velociraptor(Map map){
+    public Velociraptor(Map map, int index, Dinosaur[] dinos){
         Random random = new Random();
         this.map = map;
 
@@ -19,6 +19,9 @@ public class Velociraptor extends Dinosaur{
         p.setEntity(this);
         this.position = new Cord(x, y);
         map.setCellAt(this.position.getPosX(), this.position.getPosY(), p);
+        this.health = 2;
+        this.index = index;
+        this.dinos = dinos;
     }
 
     public void move(){

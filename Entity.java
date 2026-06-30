@@ -6,16 +6,16 @@ public abstract class Entity {
     protected Cord nextPos;
     protected int direction;
     protected Map map;
+    protected Dinosaur[] dinos;
 
     public void move(){
         this.nextPos = calcNewPos(this.direction);
-        Cell dest = map.getCellAt(nextPos.getPosX(), nextPos.getPosY());
-        if (!dest.isWall()) {
-            if (!dest.hasEntity()) {
-                map.moveEntity(this.position, nextPos);
-                this.position = nextPos;
-            }
+        if(!map.isValid(nextPos.getPosX(), nextPos.getPosY())){
+            return;
         }
+        map.moveEntity(this.position, nextPos);
+        this.position = nextPos;
+
     };
 
 
@@ -35,5 +35,9 @@ public abstract class Entity {
 
     public int getHealth() {
         return health;
+    }
+
+    public void recebeAtaque(int dano){
+        health -= dano;
     }
 }

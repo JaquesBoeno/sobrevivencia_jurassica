@@ -40,7 +40,8 @@ public class Box {
         if(type < 3) {
             i.receiveItem(type);
         } else{
-            dinos[dinos.length - 1] = new Compsognato(position.getPosX(), position.getPosY(), map);
+            dinos[dinos.length - 1] = new Compsognato(this.position.getPosX(), this.position.getPosY(), map);
+            dinos[dinos.length - 1].index = dinos.length - 1;
         }
 
         Cell c = map.getCellAt(position.getPosX(), position.getPosY());

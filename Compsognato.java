@@ -3,7 +3,7 @@ package TrabalhoPOO;
 import java.util.Random;
 
 public class Compsognato extends Dinosaur {
-    public Compsognato(Map map){
+    public Compsognato(Map map, int index, Dinosaur[] dinos){
         Random random = new Random();
         this.map = map;
 
@@ -19,6 +19,9 @@ public class Compsognato extends Dinosaur {
         p.setEntity(this);
         this.position = new Cord(x, y);
         map.setCellAt(this.position.getPosX(), this.position.getPosY(), p);
+        this.health = 1;
+        this.index = index;
+        this.dinos = dinos;
     }
 
     public Compsognato(int posX, int posY, Map map){

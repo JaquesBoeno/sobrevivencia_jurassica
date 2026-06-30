@@ -1,18 +1,18 @@
 package TrabalhoPOO;
 
 public class Cell {
-    private boolean isWall;
+    private boolean hasWall;
     private Entity entity;
     private Box box;
 
     public Cell() {
-        this.isWall = false;
+        this.hasWall = false;
         this.entity = null;
         this.box = null;
     }
 
     public Cell(boolean wall) {
-        this.isWall = wall;
+        this.hasWall = wall;
     }
 
     public void setEntity(Entity entity) {
@@ -30,10 +30,10 @@ public class Cell {
     public Box getBox(){ return box; }
 
     public boolean isEmpty(){
-        return !isWall && entity == null;
+        return !hasWall && entity == null;
     }
-    public boolean isWall() {
-        return this.isWall;
+    public boolean hasWall() {
+        return this.hasWall;
     }
     public boolean hasEntity(){
         return this.entity == null;
@@ -41,7 +41,7 @@ public class Cell {
 
     public String render(){
         String r = "";
-        if (isWall) r += '#';
+        if (hasWall) r += '#';
         if (this.entity!= null) r += entity.render();
         if (this.box != null) r += box.render();
         if (r.isEmpty()) r += ".";
