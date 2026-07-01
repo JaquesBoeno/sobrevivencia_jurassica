@@ -32,18 +32,30 @@ public class Box {
     }
 
     public String render(){
+        if (this.hasCompsognato())
+            return TextColor.color("X", TextColor.Color.GREEN);
         return TextColor.color("X", TextColor.Color.YELLOW);
     }
 
-    public void putItem(Inventory i){
-        if(type < 3) {
+    public Dinosaur putItem(Inventory i) {
+        if (type < 3) {
             i.receiveItem(type);
-        } else{
-            dinos.add( new Compsognato(position.getPosX(), position.getPosY(), map, this.dinos));
-        }
 
-        Cell c = map.getCellAt(position.getPosX(), position.getPosY());
-        c.setBox(null);
+            Cell c = map.getCellAt(position.getPosX(), position.getPosY());
+            c.setBox(null);
+            map.setCellAt(position.getPosX(), position.getPosY(), c);
+
+            return null;
+        } else {
+            Dinosaur comp = new Compsognato(position.getPosX(), position.getPosY(), map, this.dinos);
+            dinos.add(comp);
+
+            Cell c = map.getCellAt(position.getPosX(), position.getPosY());
+            c.setBox(null);
+            map.setCellAt(position.getPosX(), position.getPosY(), c);
+
+            return comp;
+        }
     }
 
     public int getType(){ return type; }

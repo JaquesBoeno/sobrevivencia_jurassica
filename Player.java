@@ -25,20 +25,16 @@ public class Player extends Entity {
 
     public void move(){
         super.move();
-        boolean haveCompsognato = false;
+        Dinosaur  comp = null;
         Cell c =map.getCellAt(nextPos.getPosX(), nextPos.getPosY());
         Box b = c.getBox();
 
-        if(b != null){
-            haveCompsognato = b.hasCompsognato();
-            b.putItem(inventory);
+        if(b != null) {
+            comp = b.putItem(inventory);
+            if (comp != null) {
+                startFight(comp);
+            }
         }
-        if (haveCompsognato){
-            startFight(c.getEntity());
-        }
-
-        c.setBox(null);
-        map.setCellAt(position.getPosX(), position.getPosY(), c);
     }
     public Cord getPos(){
         return this.position;

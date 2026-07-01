@@ -16,6 +16,7 @@ public class Compsognato extends Dinosaur {
         p.setEntity(this);
         this.position = new Cord(posX, posY);
         map.setCellAt(this.position.getPosX(), this.position.getPosY(), p);
+        this.health=1;
     }
 
     public void move(){
