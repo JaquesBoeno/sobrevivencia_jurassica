@@ -32,8 +32,6 @@ public class Box {
     }
 
     public String render(){
-        if (this.hasCompsognato())
-            return TextColor.color("X", TextColor.Color.GREEN);
         return TextColor.color("X", TextColor.Color.YELLOW);
     }
 

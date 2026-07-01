@@ -73,10 +73,10 @@ public abstract class Entity {
             player = (Player) this;
             dino = (Dinosaur) e;
         }
-        boolean fujir = false;
+        boolean fugir = false;
         Inventory inventario = player.getInventory();
 
-        while (player.getHealth() > 0 && dino.getHealth() > 0 && !fujir) {
+        while (player.getHealth() > 0 && dino.getHealth() > 0 && !fugir) {
             System.out.println("---------------------");
             System.out.println("Vida: " + player.getHealth() + "\tVida Dinossauro: " + dino.getHealth());
             System.out.println("---------------------");
@@ -123,12 +123,16 @@ public abstract class Entity {
                     inventario.takeItem(2);
                     break;
                 case 'F':
-                    fujir = true;
+                    fugir = true;
                     break;
             }
 
             if (dino.getHealth() <= 0) {
                 dino.kill();
+                break;
+            }
+
+            if (player.getHealth() <= 0){
                 break;
             }
 

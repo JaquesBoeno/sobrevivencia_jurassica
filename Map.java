@@ -64,7 +64,7 @@ public class Map {
         }
     }
 
-    public void renderMap(Cord player_cord, int radius){
+    public void renderMap(Cord player_cord, double radius){
         Cord current_cord = new Cord();
         for (int i = 0; i < this.size; i += 1) {
             for (int j = 0; j < this.size; j += 1) {

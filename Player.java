@@ -4,7 +4,7 @@ public class Player extends Entity {
     private int percepcao;
     private Inventory inventory;
 
-    public Player(Map map){
+    public Player(Map map, int percepcao){
         super();
         this.map = map;
         Cell p = new Cell();
@@ -14,6 +14,7 @@ public class Player extends Entity {
         this.health = 5;
         this.maxHealth = 5;
         this.inventory = new Inventory();
+        this.percepcao = percepcao;
     }
 
     public String render(){
